@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      window.process = {
+        env: {},
+      };
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
+    <script type="module">
+      import runtime from "./react-refresh-runtime.development.js";
+
+      runtime.injectIntoGlobalHook(window);
+      window.$RefreshReg$ = (type, id) => {};
+      window.$RefreshSig$ = () => (type) => type;
+
+      window.runtime = runtime;
+      let enqueueUpdate = _.debounce(runtime.performReactRefresh, 30);
+      window.enqueueUpdate = enqueueUpdate;
+    </script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>
